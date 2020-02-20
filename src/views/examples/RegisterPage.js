@@ -2,6 +2,10 @@ import React from "react";
 
 // reactstrap components
 import {
+  ButtonDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
   Button,
   Card,
   CardHeader,
@@ -26,6 +30,9 @@ function RegisterPage() {
   const [firstFocus, setFirstFocus] = React.useState(false);
   const [lastFocus, setLastFocus] = React.useState(false);
   const [emailFocus, setEmailFocus] = React.useState(false);
+  const [dropdownOpen, setOpen] = React.useState(false);
+
+  const toggle = () => setOpen(!dropdownOpen);
   React.useEffect(() => {
     document.body.classList.add("login-page");
     document.body.classList.add("sidebar-collapse");
@@ -145,6 +152,17 @@ function RegisterPage() {
                     </InputGroup>
                   </CardBody>
                   <CardFooter className="text-center">
+                    <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
+                      <DropdownToggle caret>Button Dropdown</DropdownToggle>
+                      <DropdownMenu>
+                        <DropdownItem header>Header</DropdownItem>
+                        <DropdownItem disabled>Action</DropdownItem>
+                        <DropdownItem>Another Action</DropdownItem>
+                        <DropdownItem divider />
+                        <DropdownItem>Another Action</DropdownItem>
+                      </DropdownMenu>
+                    </ButtonDropdown>
+
                     <Button
                       className="btn-neutral btn-round"
                       color="info"
